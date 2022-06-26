@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.vercel
+*generated.ts
 
 # Editor directories and files
 .vscode/*
