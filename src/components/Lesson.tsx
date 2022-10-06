@@ -22,15 +22,18 @@ export function Lesson(props: LessonProps) {
   );
 
   return (
-    <Link to={`/event/lesson/${props.slug}`} className="group">
+    <Link
+      to={isLessonAvailable ? `/event/lesson/${props.slug}` : ""}
+      className={classNames("group", {
+        "cursor-not-allowed": !isLessonAvailable,
+      })}
+    >
       <span className="text-gray-300">{availableDateFormatted}</span>
       <div
-        className={classNames(
-          "rounded border border-gray-500 p-4 mt-2 group-hover:border-green-500",
-          {
-            "bg-green-500": isAcitiveLesson,
-          }
-        )}
+        className={classNames("rounded border border-gray-500 p-4 mt-2", {
+          "bg-green-500": isAcitiveLesson,
+          "group-hover:border-green-500": isLessonAvailable,
+        })}
       >
         <header className="flex items-center justify-between">
           {isLessonAvailable ? (
